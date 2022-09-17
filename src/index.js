@@ -1,12 +1,16 @@
+require('dotenv').config()
+
 const { json } = require('express')
 const express = require('express')
 const app = express()
-const port = 3001
+const port = process.env.PORT
 
 const middleware = require('./utilities/middileware')
 
 app.use(express.json())
 app.use(middleware.requsetLogger)
+
+const URI = 'process.env.MANDODB_URL'
 
 let users =[
   {
